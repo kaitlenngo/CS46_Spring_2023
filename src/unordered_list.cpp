@@ -34,10 +34,12 @@ bool UnorderedArrayList::find(const string & word){
 }
 void UnorderedArrayList::remove(const string & word){
     int location = find_index(word);
-    for (int i = location; i < size; ++i){
-        buf[i] = buf[i + 1];
+    if (location != 1){
+        for (int i = location; i < size-1; ++i){
+            buf[i] = buf[i + 1];
+        }
+        --size;
     }
-    --size;
 }
 bool UnorderedArrayList::is_empty(){
     if (size == 0){
